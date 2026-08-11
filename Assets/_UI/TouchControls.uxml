@@ -1,0 +1,37 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="project://database/Assets/_UI/TouchControls.uss" />
+
+    <ui:VisualElement name="touch-root" class="touch-root">
+
+        <!-- LEFT: D-pad using VisualElements (not Buttons) for reliable hold detection -->
+        <ui:VisualElement name="left-controls" class="side-controls left-controls">
+            <ui:VisualElement name="dpad" class="dpad">
+                <ui:VisualElement name="btn-left" class="hitbox dpad-hitbox">
+                    <ui:VisualElement class="dpad-btn visual-btn">
+                        <ui:Label text="◀" class="btn-label" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="btn-right" class="hitbox dpad-hitbox">
+                    <ui:VisualElement class="dpad-btn visual-btn">
+                        <ui:Label text="▶" class="btn-label" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- RIGHT: action buttons as VisualElements -->
+        <ui:VisualElement name="right-controls" class="side-controls right-controls">
+            <ui:VisualElement name="btn-dash" class="hitbox action-hitbox">
+                <ui:VisualElement class="action-btn dash-btn visual-btn">
+                    <ui:Label text="DASH" class="btn-label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="btn-jump" class="hitbox action-hitbox">
+                <ui:VisualElement class="action-btn jump-btn visual-btn">
+                    <ui:Label text="JUMP" class="btn-label" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

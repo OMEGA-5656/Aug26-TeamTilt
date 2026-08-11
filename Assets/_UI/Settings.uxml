@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="project://database/Assets/_UI/Settings.uss" />
+
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="card" class="card settings-card">
+
+            <ui:Label text="SETTINGS" class="title" />
+
+            <!-- Touch Controls Row -->
+            <ui:VisualElement class="setting-row">
+                <ui:Label text="Touch Controls" class="setting-label" />
+                <ui:Toggle name="touch-toggle" class="setting-toggle" />
+            </ui:VisualElement>
+
+            <!-- Divider -->
+            <ui:VisualElement class="divider" />
+
+            <!-- Controls hint -->
+            <ui:VisualElement class="hint-box">
+                <ui:Label text="KEYBOARD CONTROLS" class="hint-title" />
+                <ui:Label text="Move:  A / D  or  ← / →" class="hint-line" />
+                <ui:Label text="Jump:  Space" class="hint-line" />
+                <ui:Label text="Dash:  Left Shift" class="hint-line" />
+                <ui:Label text="Pause: Escape" class="hint-line" />
+            </ui:VisualElement>
+
+            <ui:Button name="back-btn" text="BACK" class="btn btn-primary back-btn" />
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

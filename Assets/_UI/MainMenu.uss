@@ -1,0 +1,149 @@
+/* ── Pico Park Design Tokens ─────────────────────────────── */
+:root {
+    --color-bg:          #FFF5E4;
+    --color-bg-panel:    rgba(255, 255, 255, 0.85);
+    --color-accent:      #FF7043;
+    --color-accent-dim:  rgba(255, 112, 67, 0.25);
+    --color-accent-glow: rgba(255, 112, 67, 0.5);
+    --color-danger:      #E53935;
+    --color-text:        #3E2723;
+    --color-text-muted:  rgba(62, 39, 35, 0.55);
+    --color-btn-hover:   rgba(255, 112, 67, 0.18);
+    --radius:            12px;
+    --transition:        0.18s;
+}
+
+/* ── Root ──────────────────────────────────────────────────── */
+.root {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg);
+}
+
+/* ── Background ────────────────────────────────────────────── */
+.background {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--color-bg);
+}
+
+/* ── Card ──────────────────────────────────────────────────── */
+.card {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--color-bg-panel);
+    border-radius: var(--radius);
+    border-width: 3px;
+    border-color: var(--color-accent);
+    padding: 32px;
+    width: 92%;
+    max-width: 700px;
+    min-height: 440px;
+}
+
+/* ── Logo ──────────────────────────────────────────────────── */
+.logo {
+    font-size: 64px;
+    color: var(--color-accent);
+    -unity-font-style: bold;
+    letter-spacing: 6px;
+    margin-bottom: 4px;
+    -unity-text-align: middle-center;
+}
+
+.tagline {
+    font-size: 16px;
+    color: var(--color-text-muted);
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    -unity-text-align: middle-center;
+}
+
+/* ── Button group ──────────────────────────────────────────── */
+.button-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 85%;
+    max-width: 400px;
+}
+
+/* ── Base button ───────────────────────────────────────────── */
+.btn {
+    height: 60px;
+    border-radius: var(--radius);
+    border-width: 2px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    -unity-font-style: bold;
+    margin-bottom: 20px;
+    transition-duration: var(--transition);
+    -unity-text-align: middle-center;
+    cursor: link;
+}
+
+.btn:hover {
+    scale: 1.03 1.03;
+}
+
+/* ── Primary button ────────────────────────────────────────── */
+.btn-primary {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #FF8A65;
+    border-color: #FF8A65;
+}
+
+/* ── Secondary button ──────────────────────────────────────── */
+.btn-secondary {
+    background-color: transparent;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-btn-hover);
+}
+
+/* ── Danger button ─────────────────────────────────────────── */
+.btn-danger {
+    background-color: transparent;
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+.btn-danger:hover {
+    background-color: rgba(229, 57, 53, 0.15);
+}
+
+/* ── Version label ─────────────────────────────────────────── */
+.version {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-top: 24px;
+    letter-spacing: 2px;
+    -unity-text-align: middle-center;
+}
+
+.title {
+    font-size: 28px;
+    color: var(--color-accent);
+    -unity-font-style: bold;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    -unity-text-align: middle-center;
+}
+
+.status {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    -unity-text-align: middle-center;
+    margin-bottom: 20px;
+}

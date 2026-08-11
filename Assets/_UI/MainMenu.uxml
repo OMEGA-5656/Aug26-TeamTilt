@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <Style src="project://database/Assets/_UI/MainMenu.uss" />
+
+    <ui:VisualElement name="root" class="root">
+        <!-- Background layer -->
+        <ui:VisualElement name="background" class="background" />
+
+        <!-- Center card -->
+        <ui:VisualElement name="card" class="card">
+            <ui:Label name="logo-label" text="TEAM TILT" class="logo" />
+            <ui:Label name="tagline-label" text="MULTIPLAYER PLATFORMER" class="tagline" />
+
+            <ui:VisualElement name="button-group" class="button-group">
+                <ui:Button name="play-btn" text="PLAY" class="btn btn-primary" />
+                <ui:Button name="settings-btn" text="SETTINGS" class="btn btn-secondary" />
+                <ui:Button name="quit-btn" text="QUIT" class="btn btn-danger" />
+            </ui:VisualElement>
+
+            <ui:Label name="version-label" text="v0.1.0 ALPHA" class="version" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

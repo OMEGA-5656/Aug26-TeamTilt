@@ -1,0 +1,89 @@
+# ==========================
+# Unity generated folders
+# ==========================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# ==========================
+# Unity 3rd party plugin / package caches
+# ==========================
+Assets/Plugins/NuGet/
+Library/PackageCache/
+Library/mcp-server/
+
+# ==========================
+# Android / Gradle (Unity build caches)
+# ==========================
+.utmp/
+android/
+gradle/
+*.apk
+*.aab
+*.keystore
+!gradle/wrapper/gradle-wrapper.jar
+
+# ==========================
+# AI agent / MCP local config (personal, machine-specific)
+# ==========================
+.commandcode/
+.agent/
+.mcp.json
+.agents/
+
+# ==========================
+# IDE / Editor
+# ==========================
+.idea/
+.vs/
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+.vsconfig
+
+# ==========================
+# OS
+# ==========================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==========================
+# Crash reports / logs
+# ==========================
+sysinfo.txt
+*.stackdump
+crashlytics-build.properties
+*.log
+
+# ==========================
+# Git
+# ==========================
+.git/
+.gitattributes
+
+# ==========================
+# Misc
+# ==========================
+node_modules/
+.env
+.env.local

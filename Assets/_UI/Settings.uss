@@ -1,0 +1,113 @@
+/* ── Settings.uss — fully self-contained ─────────────────────── */
+
+:root {
+    --color-bg:     #FFF5E4;
+    --color-accent: #FF7043;
+    --color-accent-dark: #E64A19;
+    --color-text:   #3E2723;
+    --radius: 16px;
+}
+
+.root {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg);
+    width: 100%;
+    height: 100%;
+}
+
+.card {
+    background-color: #FFFBF5;
+    border-radius: var(--radius);
+    border-width: 2px;
+    border-color: rgba(255, 112, 67, 0.3);
+    padding: 36px;
+    align-items: stretch;
+}
+
+.settings-card {
+    width: 88%;
+    max-width: 560px;
+}
+
+.title {
+    font-size: 28px;
+    color: var(--color-accent);
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    letter-spacing: 4px;
+    margin-bottom: 28px;
+}
+
+/* ── Setting Row ─────────────────────────────────────────────── */
+.setting-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom-width: 1px;
+    border-color: rgba(255, 112, 67, 0.12);
+}
+
+.setting-label {
+    font-size: 17px;
+    color: var(--color-text);
+}
+
+.setting-toggle {
+    -unity-text-align: middle-right;
+}
+
+/* ── Divider ─────────────────────────────────────────────────── */
+.divider {
+    height: 1px;
+    background-color: rgba(255, 112, 67, 0.15);
+    margin: 20px 0;
+}
+
+/* ── Controls Hint Box ───────────────────────────────────────── */
+.hint-box {
+    background-color: rgba(255, 112, 67, 0.06);
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgba(255, 112, 67, 0.2);
+    padding: 16px 20px;
+    margin-bottom: 24px;
+}
+
+.hint-title {
+    font-size: 13px;
+    color: var(--color-accent);
+    -unity-font-style: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.hint-line {
+    font-size: 15px;
+    color: var(--color-text);
+    margin: 3px 0;
+    opacity: 0.85;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btn {
+    border-radius: 10px;
+    border-width: 0;
+    height: 52px;
+    font-size: 16px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    transition-duration: 0.12s;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.btn-primary:hover { background-color: #FF8A65; }
+.btn-primary:active { scale: 0.97 0.97; }
+
+.back-btn { margin-top: 8px; }

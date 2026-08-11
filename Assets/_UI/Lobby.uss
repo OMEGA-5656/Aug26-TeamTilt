@@ -1,0 +1,65 @@
+@import url("MainMenu.uss");
+
+.lobby-card {
+    width: 90%;
+    max-width: 700px;
+    height: 85%;
+    max-height: 800px;
+    padding: 24px;
+}
+
+.list-container {
+    flex-grow: 1;
+    background-color: rgba(255, 112, 67, 0.06);
+    border-radius: var(--radius);
+    border-color: var(--color-accent-dim);
+    border-width: 2px;
+    margin-bottom: 24px;
+    padding: 12px;
+    width: 100%;
+}
+
+.player-scroll-view {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.horizontal-group {
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.flex-1 { flex-grow: 1; margin-right: 8px; }
+.flex-2 { flex-grow: 2; margin-left: 8px; }
+
+.lobby-status {
+    margin-bottom: 16px;
+}
+
+/* ── Player Row ─────────────────────────────────────────────── */
+.player-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 112, 67, 0.10);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    min-height: 60px;
+    border-width: 2px;
+    border-color: var(--color-accent-dim);
+}
+
+.player-name {
+    color: var(--color-text);
+    font-size: 18px;
+    -unity-font-style: bold;
+}
+
+.player-ready-status {
+    color: var(--color-accent);
+    font-size: 14px;
+    letter-spacing: 2px;
+    -unity-font-style: bold;
+}

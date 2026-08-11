@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="project://database/Assets/_UI/Lobby.uss" />
+
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="card" class="card lobby-card">
+            <ui:Label name="title-label" text="LOBBY" class="title" />
+
+            <ui:VisualElement name="player-list-container" class="list-container">
+                <!-- We will populate this from code instead of ListView for simplicity in this prototype, 
+                     or map it directly with a ScrollView -->
+                <ui:ScrollView name="player-scroll-view" class="player-scroll-view" />
+            </ui:VisualElement>
+
+            <!-- Status feedback -->
+            <ui:Label name="status-label" text="Waiting for players..." class="status lobby-status" />
+
+            <ui:VisualElement name="button-group" class="button-group horizontal-group">
+                <ui:Button name="leave-btn" text="LEAVE" class="btn btn-secondary flex-1" />
+                <ui:Button name="start-btn" text="START GAME" class="btn btn-primary flex-2" />
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

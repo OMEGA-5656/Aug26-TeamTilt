@@ -1,0 +1,53 @@
+.pause-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.60);
+    align-items: center;
+    justify-content: center;
+}
+
+.pause-card {
+    background-color: #FFFBF5;
+    border-radius: 16px;
+    border-width: 2px;
+    border-color: rgba(255, 112, 67, 0.35);
+    padding: 40px 48px;
+    align-items: stretch;
+    min-width: 320px;
+}
+
+.pause-title {
+    font-size: 32px;
+    color: #FF7043;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    letter-spacing: 4px;
+    margin-bottom: 28px;
+}
+
+.pause-btn {
+    height: 52px;
+    border-radius: 10px;
+    font-size: 16px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    border-width: 0;
+    margin-bottom: 12px;
+    transition-duration: 0.1s;
+}
+
+.btn-primary {
+    background-color: #FF7043;
+    color: white;
+}
+.btn-primary:hover  { background-color: #FF8A65; }
+.btn-primary:active { scale: 0.97 0.97; }
+
+.btn-outline {
+    background-color: transparent;
+    border-width: 2px;
+    border-color: #FF7043;
+    color: #FF7043;
+}
+.btn-outline:hover  { background-color: rgba(255,112,67,0.1); }
+.btn-outline:active { scale: 0.97 0.97; }
