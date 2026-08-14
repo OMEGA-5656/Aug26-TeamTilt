@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Server-authoritative game level controller.
@@ -157,7 +156,7 @@ public class GameLevelManager : NetworkBehaviour
     [ClientRpc]
     private void LevelCompleteClientRpc()
     {
-        Debug.Log("[GameLevelManager] Level complete — loading next level.");
+        Debug.Log("[GameLevelManager] Level complete — returning to Level Select.");
         // Show toast before transitioning
         ToastManager.Show("🎉 Level Complete! Great teamwork!", 2.5f);
 
@@ -165,33 +164,26 @@ public class GameLevelManager : NetworkBehaviour
         if (NetworkManager.Singleton.IsServer)
         {
             // Small delay so toast is visible
-            Invoke(nameof(LoadNextLevel), 2f);
+            Invoke(nameof(ReturnToLevelSelect), 2f);
         }
     }
 
     /// <summary>
-    /// Teleports the whole team to the next level (server-side scene load that
-    /// re-spawns everyone at the new level's spawn points). Falls back to
-    /// LevelSelect after the final level is cleared.
+    /// Returns the team to the Level Select screen. The next level was already
+    /// unlocked by LevelProgressManager.UnlockNext, so the newly unlocked tile
+    /// shows up for the host to pick.
     /// </summary>
-    private void LoadNextLevel()
+    private void ReturnToLevelSelect()
     {
-        int next = _levelIndex + 1;
-        if (next > LevelProgressManager.TotalLevels)
+        // Despawn all player objects so no ghost/duplicate carries into the next scene.
+        foreach (var kvp in _playerObjects)
         {
-            Debug.Log("[GameLevelManager] All levels complete — returning to LevelSelect.");
-            GameManager.Instance?.ChangeState(GameState.LevelSelect);
-            return;
+            if (kvp.Value != null && kvp.Value.IsSpawned)
+                kvp.Value.Despawn();
         }
+        _playerObjects.Clear();
+        _playersInDoor.Clear();
 
-        PlayerPrefs.SetInt("teamtilt_current_level", next);
-        string sceneName = LevelSelectManager.GetLevelScene(next);
-        Debug.Log($"[GameLevelManager] Loading next level {next} ({sceneName})");
-        NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-    }
-
-    private void LoadLevelSelect()
-    {
         GameManager.Instance?.ChangeState(GameState.LevelSelect);
     }
 
