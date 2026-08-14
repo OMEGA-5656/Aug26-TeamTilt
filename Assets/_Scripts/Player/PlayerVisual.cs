@@ -25,6 +25,15 @@ public class PlayerVisual : NetworkBehaviour
 
     private void Awake() => _sr = GetComponent<SpriteRenderer>();
 
+    /// <summary>
+    /// Toggles the player's sprite visibility (used by the finish door to "absorb" players).
+    /// </summary>
+    public void SetVisible(bool visible)
+    {
+        if (_sr == null) return;
+        _sr.enabled = visible;
+    }
+
     public override void OnNetworkSpawn()
     {
         if (_sr == null) return;

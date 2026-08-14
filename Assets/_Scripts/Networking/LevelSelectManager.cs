@@ -23,6 +23,12 @@ public class LevelSelectManager : NetworkBehaviour
         SceneNames.GameLevel1,
     };
 
+    /// <summary>Returns the scene name for a level index (used by GameLevelManager to load the next level).</summary>
+    public static string GetLevelScene(int levelIndex)
+    {
+        return LevelScenes[Mathf.Clamp(levelIndex, 1, LevelScenes.Length - 1)];
+    }
+
     private void Awake() => Instance = this;
 
     /// <summary>Host calls this when a level tile is clicked.</summary>
@@ -41,7 +47,7 @@ public class LevelSelectManager : NetworkBehaviour
         // Store which level is being played so GameLevelManager can read it
         PlayerPrefs.SetInt("teamtilt_current_level", levelIndex);
 
-        string sceneName = LevelScenes[Mathf.Clamp(levelIndex, 1, LevelScenes.Length - 1)];
+        string sceneName = GetLevelScene(levelIndex);
         NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }

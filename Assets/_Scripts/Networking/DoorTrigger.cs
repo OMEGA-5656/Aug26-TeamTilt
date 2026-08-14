@@ -1,15 +1,19 @@
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
 /// <summary>
-/// Placed on the exit door.
+/// Placed on the finish door.
 /// Notifies GameLevelManager when a player enters/exits.
-/// When ALL players are inside simultaneously the level is cleared.
+/// The server hides the player the moment they step inside the door,
+/// and the level completes once EVERY player has entered.
 /// </summary>
 public class DoorTrigger : MonoBehaviour
 {
     private Collider2D _trigger;
-    private bool _playerInside;
+
+    // Tracks which players are currently inside (by collider instance id → NetworkObject)
+    private readonly Dictionary<int, NetworkObject> _inside = new();
 
     private void Awake()
     {
@@ -21,6 +25,7 @@ public class DoorTrigger : MonoBehaviour
         var netObj = other.GetComponent<NetworkObject>();
         if (netObj == null || !netObj.IsOwner) return;
 
+        _inside[other.GetInstanceID()] = netObj;
         Debug.Log($"[DoorTrigger] Player {netObj.OwnerClientId} entered door.");
         GameLevelManager.Instance?.PlayerEnteredDoorServerRpc(netObj.OwnerClientId);
     }
@@ -30,6 +35,7 @@ public class DoorTrigger : MonoBehaviour
         var netObj = other.GetComponent<NetworkObject>();
         if (netObj == null || !netObj.IsOwner) return;
 
+        _inside.Remove(other.GetInstanceID());
         Debug.Log($"[DoorTrigger] Player {netObj.OwnerClientId} exited door.");
         GameLevelManager.Instance?.PlayerExitedDoorServerRpc(netObj.OwnerClientId);
     }
@@ -42,29 +48,31 @@ public class DoorTrigger : MonoBehaviour
     {
         if (_trigger == null) return;
 
-        // Only the local player's controller matters for this fallback; the authoritative
-        // RPC calls are made by the owner, so check via the player's collider overlap.
-        var player = FindObjectOfType<PlayerController>();
-        if (player == null) return;
+        // Re-evaluate the local player's collider against the trigger each physics step.
+        var localPlayer = FindObjectOfType<PlayerController>();
+        if (localPlayer == null) return;
 
-        var netObj = player.GetComponent<NetworkObject>();
+        var netObj = localPlayer.GetComponent<NetworkObject>();
         if (netObj == null || !netObj.IsOwner) return;
 
-        var playerCollider = player.GetComponent<Collider2D>();
+        var playerCollider = localPlayer.GetComponent<Collider2D>();
         if (playerCollider == null) return;
 
-        bool inside = _trigger.OverlapPoint(player.transform.position) ||
+        bool inside = _trigger.OverlapPoint(localPlayer.transform.position) ||
                       _trigger.bounds.Contains(playerCollider.bounds.center);
 
-        if (inside && !_playerInside)
+        int id = playerCollider.GetInstanceID();
+        bool wasInside = _inside.ContainsKey(id);
+
+        if (inside && !wasInside)
         {
-            _playerInside = true;
+            _inside[id] = netObj;
             Debug.Log($"[DoorTrigger] (manual) Player {netObj.OwnerClientId} inside door.");
             GameLevelManager.Instance?.PlayerEnteredDoorServerRpc(netObj.OwnerClientId);
         }
-        else if (!inside && _playerInside)
+        else if (!inside && wasInside)
         {
-            _playerInside = false;
+            _inside.Remove(id);
             Debug.Log($"[DoorTrigger] (manual) Player {netObj.OwnerClientId} left door.");
             GameLevelManager.Instance?.PlayerExitedDoorServerRpc(netObj.OwnerClientId);
         }

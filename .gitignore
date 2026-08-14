@@ -10,6 +10,8 @@
 [Uu]ser[Ss]ettings/
 [Mm]emoryCaptures/
 [Rr]ecordings/
+# Release zip artifacts (uploaded to GitHub Releases, not committed)
+*.zip
 
 # ==========================
 # Unity 3rd party plugin / package caches
